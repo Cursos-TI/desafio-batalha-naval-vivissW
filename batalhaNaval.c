@@ -5,20 +5,35 @@
 // Siga os comentários para implementar cada parte do desafio.
 
     // Nível Novato - Posicionamento dos Navios
-   #include <stdio.h>
+#include <stdio.h>
 
 #define TAMANHO 10
 #define TAMANHO_NAVIO 3
 
 int main() {
     int tabuleiro[TAMANHO][TAMANHO];
-    
 
     // água
     for (int i = 0; i < TAMANHO; i++) {
         for (int j = 0; j < TAMANHO; j++) {
             tabuleiro[i][j] = 0;
         }
+    }
+
+    // navios 
+    int navio_horizontal[TAMANHO_NAVIO] = {3, 3, 3};
+    int navio_vertical[TAMANHO_NAVIO] = {3, 3, 3};
+
+    int linhaH = 1;    // linha 2
+    int colunaH = 3;   // coluna 4
+    for (int i = 0; i < TAMANHO_NAVIO; i++) {
+        tabuleiro[linhaH][colunaH + i] = navio_horizontal[i];
+    }
+
+    int linhaV = 5;    // linha 6
+    int colunaV = 6;   // coluna 7
+    for (int i = 0; i < TAMANHO_NAVIO; i++) {
+        tabuleiro[linhaV + i][colunaV] = navio_vertical[i];
     }
 
     // Cabeçalho com letras (A-J)
@@ -30,29 +45,11 @@ int main() {
 
     // Exibe o tabuleiro com numeração das linhas (1-10)
     for (int i = 0; i < TAMANHO; i++) {
-        printf("%2d ", i + 1); // numeração da linha
+        printf("%2d ", i + 1);
         for (int j = 0; j < TAMANHO; j++) {
             printf("%d ", tabuleiro[i][j]);
         }
         printf("\n");
-    }
-     
-    // navios 
-    int navio_horizontal[TAMANHO_NAVIO] = {3, 3, 3};
-    int navio_vertical[TAMANHO_NAVIO] = {3, 3, 3};
-
-
-    int linhaH = 1;    // linha 2
-    int colunaH = 3;   // coluna 4
-    for (int i = 0; i < TAMANHO_NAVIO; i++) {
-        tabuleiro[linhaH][colunaH + i] = navio_horizontal[i];
-    }
-
-    // Posiciona navio vertical na coluna 7, linhas 6 a 8 (índices 5–7, 6)
-    int linhaV = 5;    // linha 6
-    int colunaV = 6;   // coluna 7
-    for (int i = 0; i < TAMANHO_NAVIO; i++) {
-        tabuleiro[linhaV + i][colunaV] = navio_vertical[i];
     }
 
     return 0;
